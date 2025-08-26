@@ -8,14 +8,8 @@ CORS_ORIGINS = [
     f"https://{os.environ.get('GCP_PROJECT', 'your-project-id')}.web.app",
     f"https://{os.environ.get('GCP_PROJECT', 'your-project-id')}.firebaseapp.com"
 ]
-# Note: CORS for callable functions is typically handled by Firebase Functions itself
-# if `cors=True` is passed or by default. This list might be for HTTP triggers if any.
-# For callable functions, Firebase handles the OPTIONS request and CORS headers.
-# If you intend to use this list for `https_fn.on_request(cors=CORS_ORIGINS)`, it's fine.
-# Otherwise, for `https_fn.on_call`, it's less directly used.
 
 # --- Global Constants ---
-GOFANNON_MANIFEST_URL = "https://raw.githubusercontent.com/The-AI-Alliance/gofannon/main/manifest.json"
 
 def get_gcp_project_config():
     """
@@ -43,4 +37,4 @@ def get_gcp_project_config():
     logger.info(f"Using Project ID: {project_id}, Location: {location}, Staging Bucket: {staging_bucket}")
     return project_id, location, staging_bucket
 
-__all__ = ['CORS_ORIGINS', 'GOFANNON_MANIFEST_URL', 'get_gcp_project_config']
+__all__ = ['CORS_ORIGINS', 'get_gcp_project_config']
